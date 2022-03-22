@@ -1,0 +1,19 @@
+<div *ngFor="let idea of ideas">
+  <div class="ideaCard d-flex">
+    <div></div>
+    <div *ngIf="idea.pictureFilename; else ideaCardWithPlaceholderPicture">
+      <img
+        src="{{ pictureUrl + idea.pictureFilename }}"
+        alt="{{ idea.title }}"
+      />
+    </div>
+    <ng-template #ideaCardWithPlaceholderPicture>
+      <img src="/assets/placeholder.jpeg" alt="{{ idea.title }}" />
+    </ng-template>
+    <div class="ideaCardBody">
+      <p>{{ idea.title }}</p>
+      <p>par {{ idea.username }}</p>
+      <p>publié le {{ idea.creationDate | date: "dd/MM/yyyy" }}</p>
+    </div>
+  </div>
+</div>
